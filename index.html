@@ -245,7 +245,7 @@
   <div class="hero-left">
     <div class="hero-eyebrow">Lubbock's Boutique Nurse Injector</div>
     <h1 class="hero-headline">Your most<br><em>naturally</em><br>beautiful self.</h1>
-    <p class="hero-sub">Precision injectables, advanced laser treatments, and Lubbock's only Everesse RF — delivered by a nurse with 17 years of expertise and an eye for subtle, stunning results.</p>
+    <p class="hero-sub">Precision injectables, advanced laser treatments, and Lubbock's only Everesse RF — delivered by a nurse with 20 years of expertise and an eye for subtle, stunning results.</p>
     <div class="hero-ctas">
       <a href="https://lushaestheticsllc.myaestheticrecord.com/online-booking" class="btn-primary" target="_blank">Book Your Appointment</a>
       <a href="#services" class="btn-ghost">Explore Services</a>
@@ -294,12 +294,12 @@
   <div class="about-content">
     <div class="section-eyebrow reveal">Meet Kristen</div>
     <h2 class="section-headline reveal">Your <em>Botox Bestie</em><br>&amp; Nurse Injector</h2>
-    <p class="about-bio reveal">Born and raised in Lubbock, Kristen graduated from Texas Tech University Health Science Center with her Bachelor's of Science in Nursing. With 17 years of experience spanning ICU, cardiac, rehabilitation, and pre/postoperative care, she brings clinical precision to aesthetics that sets her apart.</p>
+    <p class="about-bio reveal">Born and raised in Lubbock, Kristen graduated from Texas Tech University Health Science Center with her Bachelor's of Science in Nursing. With 20 years of experience spanning ICU, cardiac, rehabilitation, and pre/postoperative care, she brings clinical precision to aesthetics that sets her apart.</p>
     <p class="about-bio reveal">She's passionate about enhancing your natural beauty — not changing it. Every treatment is tailored, every result intentional. Kristen is Lubbock's only provider of the cutting-edge Everesse monopolar RF system.</p>
     <div class="about-creds reveal">
       <span class="cred-tag">BSN, RN</span>
       <span class="cred-tag">Texas Tech University HSC Graduate</span>
-      <span class="cred-tag">17+ Years Clinical Experience</span>
+      <span class="cred-tag">20+ Years Clinical Experience</span>
       <span class="cred-tag">Certified Aesthetic Nurse</span>
       <span class="cred-tag">Cartessa Ambassador — Everesse</span>
     </div>
@@ -328,7 +328,7 @@
 <section class="skincare" id="skincare">
   <div class="skincare-intro reveal">
     <div class="section-eyebrow">Curated Skincare</div>
-    <h2 class="section-headline">Products Kristen<br><em>trusts &amp; carries.</em></h2>
+    <h2 class="section-headline">Products Lush<br><em>trusts &amp; carries.</em></h2>
     <p style="font-size:15px;line-height:1.8;color:var(--mink);margin-top:16px;">Every product in the Lush Aesthetics lineup is hand-selected by Kristen to complement and extend the results of your in-office treatments. Clinical-grade, results-driven, and available for purchase.</p>
   </div>
   <div class="skincare-grid">
@@ -544,40 +544,7 @@
     if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1);
   });
   setInterval(() => moveCarousel(1), 5000);
-</script>// ============================================================
-// LUSH AESTHETICS — Website Update Script
-// Paste this inside a <script> tag at the bottom of index.html
-// (just before the closing </body> tag)
-// ============================================================
-
-(function () {
-
-  // ── 1. PRODUCTS HEADING ──────────────────────────────────
-  // Find any heading that contains "Products" and update its text
-  document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div').forEach(el => {
-    if (
-      el.childNodes.length === 1 &&
-      el.childNodes[0].nodeType === Node.TEXT_NODE &&
-      /^products$/i.test(el.textContent.trim())
-    ) {
-      el.textContent = 'Products LUSH Trusts and Carries';
-    }
-  });
-
-
-  // ── 2. YEARS OF EXPERIENCE → 20 YEARS ───────────────────
-  // Replaces any text node containing a number + "years" pattern
-  // (e.g. "15 years", "10+ years", "10 Years of Experience")
-  function walkAndReplace(node) {
-    if (node.nodeType === Node.TEXT_NODE) {
-      node.textContent = node.textContent
-        // e.g. "15+ Years" or "10 years of experience"
-        .replace(/\b\d+\+?\s*years?\b/gi, '20+ Years');
-    } else {
-      node.childNodes.forEach(walkAndReplace);
-    }
-  }
-  walkAndReplace(document.body);
+</script>//
 
 
   // ── 3. BOOK YOUR EVERESSE SESSION BUTTON COLOR ──────────
