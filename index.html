@@ -324,7 +324,15 @@
     <div class="service-card dark-card reveal"><div class="service-num">06</div><div class="service-name">Microneedling + PRP</div><p class="service-desc">Amplify your results with platelet-rich plasma for supercharged collagen production and skin rejuvenation. The ultimate skin reset for deep, lasting radiance.</p><a href="https://lushaestheticsllc.myaestheticrecord.com/online-booking" class="service-link" target="_blank">Book Now</a></div>
   </div>
 </section>
-
+<section id="cherry-financing" style="background:#fdf6ee; border-top:2px solid #c9a97a; border-bottom:2px solid #c9a97a; padding:2.5rem 1.5rem; text-align:center;">
+  <p style="font-size:1.05rem; color:#5a3e2b; max-width:640px; margin:0 auto 1.25rem; line-height:1.7;">
+    <strong>Financing now available through Cherry!</strong><br>
+    We believe everyone deserves to feel their most beautiful self. Cherry financing lets you split the cost of your treatments into easy, manageable payments — with a quick, simple application.
+  </p>
+  <a href="https://tree.withcherry.com/lush-aesthetics" target="_blank" style="display:inline-block; background-color:#c9a97a; color:#1a1a1a; font-weight:700; font-size:0.95rem; text-transform:uppercase; text-decoration:none; padding:0.75rem 2rem; border-radius:4px; border:2px solid #a07850;">
+    Apply for Cherry Financing
+  </a>
+</section>
 <section class="skincare" id="skincare">
   <div class="skincare-intro reveal">
     <div class="section-eyebrow">Curated Skincare</div>
@@ -545,80 +553,5 @@
   });
   setInterval(() => moveCarousel(1), 5000);
 </script>//
-
-
-  // ── 3. BOOK YOUR EVERESSE SESSION BUTTON COLOR ──────────
-  // Find the button and give it a colour that stands out
-  document.querySelectorAll('a, button').forEach(el => {
-    if (/everesse/i.test(el.textContent)) {
-      el.style.backgroundColor = '#c9a97a';   // warm gold — adjust as desired
-      el.style.color            = '#1a1a1a';
-      el.style.border           = '2px solid #a07850';
-      el.style.fontWeight       = '600';
-    }
-  });
-
-
-  // ── 4. CHERRY FINANCING BLURB ───────────────────────────
-  // Inserts a financing banner directly after the first <section>
-  // (or after the hero — adjust the selector below if needed)
-
-  const financingHTML = `
-    <section id="cherry-financing" style="
-      background: #fdf6ee;
-      border-top: 2px solid #c9a97a;
-      border-bottom: 2px solid #c9a97a;
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-      font-family: inherit;
-    ">
-      <p style="
-        font-size: 1.05rem;
-        color: #5a3e2b;
-        max-width: 640px;
-        margin: 0 auto 1.25rem;
-        line-height: 1.7;
-      ">
-        <strong>Financing now available through Cherry!</strong><br>
-        We believe everyone deserves to feel their most beautiful self.
-        Cherry financing lets you split the cost of your treatments into
-        easy, manageable payments — with a quick, simple application.
-      </p>
-      <a
-        href="https://tree.withcherry.com/lush-aesthetics"
-        target="_blank"
-        rel="noopener noreferrer"
-        style="
-          display: inline-block;
-          background-color: #c9a97a;
-          color: #1a1a1a;
-          font-weight: 700;
-          font-size: 0.95rem;
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          text-decoration: none;
-          padding: 0.75rem 2rem;
-          border-radius: 4px;
-          border: 2px solid #a07850;
-          transition: background 0.2s;
-        "
-        onmouseover="this.style.backgroundColor='#b8935f'"
-        onmouseout="this.style.backgroundColor='#c9a97a'"
-      >
-        Apply for Cherry Financing
-      </a>
-    </section>
-  `;
-
-  // Try to insert after the first <section>, or fall back to the top of <main> / <body>
-  const firstSection = document.querySelector('section');
-  if (firstSection && firstSection.parentNode) {
-    firstSection.insertAdjacentHTML('afterend', financingHTML);
-  } else {
-    const main = document.querySelector('main') || document.body;
-    main.insertAdjacentHTML('afterbegin', financingHTML);
-  }
-
-})();
 </body>
 </html>
