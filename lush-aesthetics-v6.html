@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lush Aesthetics | Med Spa &amp; Beauty Studio</title>
+  <meta name="description" content="Lush Aesthetics – premium med spa services including injectables, skin care, lash &amp; brow treatments, and body contouring." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream:   #FAF6F1;
+      --blush:   #E8C9BE;
+      --rose:    #C9857A;
+      --mauve:   #7D5C5C;
+      --charcoal:#2E2828;
+      --white:   #FFFFFF;
+      --shadow:  rgba(46, 40, 40, .10);
+      --ff-serif: 'Cormorant Garamond', Georgia, serif;
+      --ff-sans:  'Jost', sans-serif;
+      --transition: .3s ease;
+      --radius: 6px;
+      --container: 1180px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff-sans);
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      display: inline-block;
+      font-family: var(--ff-sans);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--charcoal);
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 34px;
+      border-radius: 50px;
+      font-family: var(--ff-sans);
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+    }
+    .btn-primary {
+      background: var(--rose);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--mauve); }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--rose);
+      color: var(--rose);
+    }
+    .btn-outline:hover { background: var(--rose); color: var(--white); }
+
+    /* ── HEADER / NAV ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(250, 246, 241, .92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(200, 160, 150, .18);
+      transition: box-shadow var(--transition);
+    }
+    header.scrolled { box-shadow: 0 2px 20px var(--shadow); }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-family: var(--ff-serif);
+      font-size: 1.55rem;
+      font-weight: 400;
+      letter-spacing: .05em;
+      color: var(--mauve);
+    }
+    .nav-logo span { color: var(--rose); font-style: italic; }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-cta { margin-left: 16px; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--charcoal);
+      border-radius: 2px;
+      transition: all var(--transition);
+    }
+
+    /* ── MOBILE NAV ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--ff-serif);
+      font-size: 2rem;
+      color: var(--charcoal);
+    }
+    .mobile-menu a:hover { color: var(--rose); }
+    .mobile-close {
+      position: absolute;
+      top: 24px; right: 24px;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--charcoal);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(160deg, rgba(232, 201, 190, .35) 0%, rgba(250, 246, 241, 0) 60%),
+        var(--cream);
+      padding-top: 72px;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 80px 0;
+    }
+    .hero-text { max-width: 520px; }
+    .hero-text .section-label { font-size: .78rem; }
+    .hero-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin: 8px 0 24px;
+      color: var(--charcoal);
+    }
+    .hero-title em { color: var(--rose); font-style: italic; }
+    .hero-subtitle {
+      font-size: .98rem;
+      font-weight: 300;
+      color: #6B5B5B;
+      margin-bottom: 36px;
+      max-width: 420px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-image {
+      position: relative;
+      border-radius: 60% 40% 55% 45% / 50% 50% 50% 50%;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, var(--blush) 0%, #D4A8A0 100%);
+      box-shadow: 0 30px 80px rgba(201, 133, 122, .25);
+    }
+    .hero-image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--white);
+      font-family: var(--ff-serif);
+    }
+    .hero-image-placeholder svg { opacity: .6; }
+    .hero-badge {
+      position: absolute;
+      bottom: 28px; right: -10px;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 14px 20px;
+      box-shadow: 0 8px 24px var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .82rem;
+    }
+    .hero-badge-icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--blush);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-badge strong { display: block; font-size: 1rem; font-weight: 600; color: var(--rose); }
+
+    /* ── MARQUEE STRIP ── */
+    .marquee-strip {
+      background: var(--rose);
+      color: var(--white);
+      padding: 13px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 26s linear infinite;
+    }
+    .marquee-track span {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 0 40px;
+    }
+    .marquee-track span::before {
+      content: '✦';
+      margin-right: 40px;
+      opacity: .6;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 110px 0;
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-img-main {
+      border-radius: 40% 60% 40% 60% / 40% 40% 60% 60%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #D4B8B2 0%, var(--blush) 100%);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(201, 133, 122, .18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-img-accent {
+      position: absolute;
+      bottom: -30px; right: -30px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blush) 0%, #C09090 100%);
+      border: 6px solid var(--cream);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-text .section-title { margin-bottom: 22px; }
+    .about-text p {
+      font-size: .97rem;
+      font-weight: 300;
+      color: #6B5B5B;
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+    .about-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 36px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(201, 133, 122, .22);
+    }
+    .stat-item strong {
+      display: block;
+      font-family: var(--ff-serif);
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: var(--rose);
+    }
+    .stat-item span {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #9B8080;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 110px 0;
+      background: linear-gradient(180deg, var(--white) 0%, var(--cream) 100%);
+    }
+    .services-head {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 60px;
+    }
+    .services-head .section-title { margin-bottom: 14px; }
+    .services-head p { font-size: .97rem; font-weight: 300; color: #6B5B5B; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 38px 30px;
+      box-shadow: 0 4px 24px var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--blush), var(--rose));
+      transform: scaleY(0);
+      transition: transform var(--transition);
+      transform-origin: top;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(201,133,122,.2); }
+    .service-card:hover::before { transform: scaleY(1); }
+    .service-icon {
+      width: 56px; height: 56px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--blush) 0%, #E0B8B0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      font-size: 1.5rem;
+    }
+    .service-card h3 {
+      font-family: var(--ff-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: .88rem;
+      font-weight: 300;
+      color: #6B5B5B;
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .service-link {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap var(--transition);
+    }
+    .service-link:hover { gap: 10px; }
+
+    /* ── FEATURED TREATMENT ── */
+    #featured {
+      padding: 110px 0;
+    }
+    .featured-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .featured-img {
+      border-radius: 30px;
+      aspect-ratio: 4/3;
+      background: linear-gradient(160deg, var(--blush) 0%, #C8967E 100%);
+      box-shadow: 0 24px 60px rgba(201,133,122,.22);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .featured-text .section-title { margin: 8px 0 18px; }
+    .featured-text p { font-size: .97rem; font-weight: 300; color: #6B5B5B; line-height: 1.8; margin-bottom: 18px; }
+    .treatment-list { margin-bottom: 34px; }
+    .treatment-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: .9rem;
+      font-weight: 300;
+      color: #6B5B5B;
+      margin-bottom: 10px;
+    }
+    .treatment-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--blush);
+      border: 2px solid var(--rose);
+      margin-top: 2px;
+    }
+
+    /* ── GALLERY ── */
+    #gallery {
+      padding: 110px 0;
+      background: var(--white);
+    }
+    .gallery-head {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .gallery-head .section-title { margin-bottom: 10px; }
+    .gallery-head p { font-size: .97rem; font-weight: 300; color: #6B5B5B; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 220px);
+      gap: 16px;
+    }
+    .gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, var(--blush) 0%, #C8967E 100%);
+      box-shadow: 0 4px 16px var(--shadow);
+      transition: transform var(--transition);
+    }
+    .gallery-item:hover { transform: scale(1.02); }
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-item.wide { grid-column: span 2; }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(46,40,40,.5) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span {
+      color: var(--white);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .gallery-item-bg {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-serif);
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.7);
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials {
+      padding: 110px 0;
+      background: linear-gradient(160deg, #F0E5E0 0%, var(--cream) 60%);
+    }
+    .testimonials-head {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 56px;
+    }
+    .testimonials-head .section-title { margin-bottom: 12px; }
+    .testimonials-head p { font-size: .97rem; font-weight: 300; color: #6B5B5B; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 36px 30px;
+      box-shadow: 0 4px 24px var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+    .stars { color: var(--rose); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .testimonial-card blockquote {
+      font-family: var(--ff-serif);
+      font-size: 1.08rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--charcoal);
+      flex: 1;
+      margin-bottom: 24px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blush), var(--rose));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-family: var(--ff-serif);
+      font-size: 1.1rem;
+    }
+    .author-info strong { display: block; font-size: .9rem; font-weight: 600; }
+    .author-info span { font-size: .78rem; color: #9B8080; font-weight: 300; }
+
+    /* ── PRICING ── */
+    #pricing {
+      padding: 110px 0;
+    }
+    .pricing-head {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 60px;
+    }
+    .pricing-head .section-title { margin-bottom: 12px; }
+    .pricing-head p { font-size: .97rem; font-weight: 300; color: #6B5B5B; }
+    .pricing-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
+    }
+    .tab-btn {
+      padding: 10px 24px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(201,133,122,.35);
+      background: transparent;
+      font-family: var(--ff-sans);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #9B8080;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--rose);
+      border-color: var(--rose);
+      color: var(--white);
+    }
+    .pricing-panel { display: none; }
+    .pricing-panel.active { display: block; }
+    .pricing-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(201,133,122,.15);
+      gap: 16px;
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-name { font-size: .97rem; font-weight: 400; }
+    .price-desc { font-size: .82rem; font-weight: 300; color: #9B8080; margin-top: 3px; }
+    .price-value { font-family: var(--ff-serif); font-size: 1.2rem; font-weight: 400; color: var(--rose); white-space: nowrap; }
+
+    /* ── BOOKING / CONTACT ── */
+    #contact {
+      padding: 110px 0;
+      background: linear-gradient(160deg, var(--blush) 0%, #E4BEB5 100%);
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .contact-text .section-title { color: var(--mauve); margin: 8px 0 18px; }
+    .contact-text p { font-size: .97rem; font-weight: 300; color: var(--mauve); line-height: 1.8; margin-bottom: 30px; }
+    .contact-details { display: flex; flex-direction: column; gap: 18px; }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .contact-detail-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-detail strong { display: block; font-size: .82rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--mauve); }
+    .contact-detail span { font-size: .9rem; font-weight: 300; color: #5C4040; }
+    .booking-form {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 46px 40px;
+      box-shadow: 0 20px 60px rgba(100,60,60,.12);
+    }
+    .booking-form h3 {
+      font-family: var(--ff-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 28px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #9B8080;
+      margin-bottom: 7px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 1.5px solid rgba(201,133,122,.25);
+      border-radius: 10px;
+      font-family: var(--ff-sans);
+      font-size: .93rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      background: var(--cream);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--rose); }
+    .form-group textarea { resize: vertical; min-height: 96px; }
+    .booking-form .btn { width: 100%; text-align: center; margin-top: 6px; }
+
+    /* ── INSTAGRAM STRIP ── */
+    #instagram {
+      padding: 80px 0;
+    }
+    .instagram-head { text-align: center; margin-bottom: 36px; }
+    .instagram-head a { color: var(--rose); font-size: .82rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+    .insta-item {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--blush) 0%, #C8967E 100%);
+      position: relative;
+      cursor: pointer;
+      transition: transform var(--transition);
+    }
+    .insta-item:hover { transform: scale(1.04); }
+    .insta-item:nth-child(2) { background: linear-gradient(135deg, #D4C4BC 0%, #B8947E 100%); }
+    .insta-item:nth-child(3) { background: linear-gradient(135deg, #E0C8B8 0%, var(--rose) 100%); }
+    .insta-item:nth-child(4) { background: linear-gradient(135deg, #C8B0A8 0%, var(--mauve) 100%); }
+    .insta-item:nth-child(5) { background: linear-gradient(135deg, #DCC4B8 0%, #B8887A 100%); }
+    .insta-item:nth-child(6) { background: linear-gradient(135deg, var(--blush) 0%, var(--rose) 100%); }
+    .insta-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(46,40,40,.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .insta-item:hover .insta-overlay { opacity: 1; }
+    .insta-overlay svg { color: white; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,.7);
+      padding: 70px 0 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 60px;
+    }
+    .footer-brand .nav-logo { color: var(--blush); }
+    .footer-brand .nav-logo span { color: var(--rose); }
+    .footer-brand p { margin-top: 16px; font-size: .88rem; font-weight: 300; line-height: 1.8; max-width: 280px; }
+    .footer-social { display: flex; gap: 12px; margin-top: 24px; }
+    .social-link {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+      font-size: 1rem;
+    }
+    .social-link:hover { background: var(--rose); }
+    .footer-col h4 {
+      font-family: var(--ff-sans);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      font-size: .88rem;
+      font-weight: 300;
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--rose); }
+    .footer-hours li { font-size: .88rem; font-weight: 300; margin-bottom: 8px; }
+    .footer-hours li strong { color: var(--white); font-weight: 400; }
+    .footer-bottom {
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .78rem;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-bottom a { color: var(--rose); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+      .gallery-item.tall { grid-row: span 1; }
+      .gallery-item.wide { grid-column: span 2; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-image { max-width: 340px; margin: 0 auto; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-img-accent { bottom: -20px; right: 10px; }
+      .featured-inner { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .booking-form { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+      .about-stats { flex-wrap: wrap; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item.wide { grid-column: span 1; }
+      .instagram-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HEADER ══ -->
+  <header id="site-header">
+    <nav class="container">
+      <a href="#" class="nav-logo"><span>Lush</span> Aesthetics</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact" class="btn btn-primary nav-cta">Book Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-close" id="mobile-close-btn" aria-label="Close menu">✕</button>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#gallery" class="mobile-link">Gallery</a>
+    <a href="#testimonials" class="mobile-link">Reviews</a>
+    <a href="#pricing" class="mobile-link">Pricing</a>
+    <a href="#contact" class="btn btn-primary mobile-link">Book Now</a>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <span class="section-label">Premium Med Spa &amp; Beauty Studio</span>
+          <h1 class="hero-title">Reveal Your Most <em>Radiant</em> Self</h1>
+          <p class="hero-subtitle">
+            Expertly curated aesthetic treatments designed to enhance your natural beauty,
+            restore confidence, and deliver results you'll love.
+          </p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Book a Consultation</a>
+            <a href="#services" class="btn btn-outline">Explore Services</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-image-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+            </svg>
+            <span>Lush Aesthetics</span>
+          </div>
+          <div class="hero-badge">
+            <div class="hero-badge-icon">⭐</div>
+            <div>
+              <strong>5.0</strong>
+              <span>500+ Happy Clients</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MARQUEE STRIP ══ -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Botox &amp; Dysport</span>
+      <span>Lip Fillers</span>
+      <span>Cheek Augmentation</span>
+      <span>Microblading</span>
+      <span>Lash Extensions</span>
+      <span>HydraFacial</span>
+      <span>Chemical Peels</span>
+      <span>Body Contouring</span>
+      <span>PRP Treatments</span>
+      <span>Botox &amp; Dysport</span>
+      <span>Lip Fillers</span>
+      <span>Cheek Augmentation</span>
+      <span>Microblading</span>
+      <span>Lash Extensions</span>
+      <span>HydraFacial</span>
+      <span>Chemical Peels</span>
+      <span>Body Contouring</span>
+      <span>PRP Treatments</span>
+    </div>
+  </div>
+
+  <!-- ══ ABOUT ══ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-image-wrap">
+          <div class="about-img-main">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,0.5)" stroke-width="1">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+            </svg>
+          </div>
+          <div class="about-img-accent">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,0.7)" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+            </svg>
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="section-label">About Lush Aesthetics</span>
+          <h2 class="section-title">Where Science Meets Natural Beauty</h2>
+          <p>
+            At Lush Aesthetics, we believe everyone deserves to feel confident in their own skin.
+            Our team of licensed, board-certified professionals combines the latest medical-grade
+            techniques with a personalized, client-first approach.
+          </p>
+          <p>
+            From our inviting studio, we offer a full range of aesthetic treatments — each carefully
+            tailored to your unique features, lifestyle, and goals. No cookie-cutter results.
+            Just you, looking and feeling your absolute best.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <strong>500+</strong>
+              <span>Happy Clients</span>
+            </div>
+            <div class="stat-item">
+              <strong>8+</strong>
+              <span>Years Experience</span>
+            </div>
+            <div class="stat-item">
+              <strong>100%</strong>
+              <span>Satisfaction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICES ══ -->
+  <section id="services">
+    <div class="container">
+      <div class="services-head">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">Our Signature Services</h2>
+        <p>Premium treatments performed with precision, artistry, and your comfort in mind.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">💉</div>
+          <h3>Injectables</h3>
+          <p>Botox, Dysport, and a full range of dermal fillers to smooth, lift, and volumize — all with a natural finish.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">✨</div>
+          <h3>Skin Treatments</h3>
+          <p>HydraFacials, chemical peels, microneedling, and more to reveal brighter, smoother, younger-looking skin.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">👁️</div>
+          <h3>Lash &amp; Brow</h3>
+          <p>Lash extensions, lifts, tints, and microblading to frame your face perfectly — wake up flawless every day.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🌸</div>
+          <h3>Body Contouring</h3>
+          <p>Non-invasive fat reduction and skin tightening treatments to sculpt and tone your silhouette.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💆</div>
+          <h3>Facials &amp; Glow Treatments</h3>
+          <p>Custom facials, lymphatic massage, and glow treatments for deeply nourished, luminous skin.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔬</div>
+          <h3>PRP &amp; Advanced Therapies</h3>
+          <p>Platelet-rich plasma treatments and advanced regenerative therapies for hair restoration and skin renewal.</p>
+          <a href="#contact" class="service-link">Learn more →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURED TREATMENT ══ -->
+  <section id="featured">
+    <div class="container">
+      <div class="featured-inner">
+        <div class="featured-img">
+          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke="rgba(255,255,255,0.5)" stroke-width="1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+          </svg>
+        </div>
+        <div class="featured-text">
+          <span class="section-label">Featured Treatment</span>
+          <h2 class="section-title">The Lush Glow Package</h2>
+          <p>
+            Our signature package combines the most-loved treatments into one luxurious session.
+            Walk in feeling tired and walk out absolutely glowing.
+          </p>
+          <ul class="treatment-list">
+            <li>HydraFacial deep cleanse &amp; hydration boost</li>
+            <li>LED light therapy for collagen stimulation</li>
+            <li>Derma-planing for silky smooth skin</li>
+            <li>Customized serum infusion</li>
+            <li>Relaxing facial massage</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Book the Glow Package</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ GALLERY ══ -->
+  <section id="gallery">
+    <div class="container">
+      <div class="gallery-head">
+        <span class="section-label">Our Work</span>
+        <h2 class="section-title">Before &amp; After Gallery</h2>
+        <p>Real results from real clients — because results speak louder than words.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item tall">
+          <div class="gallery-item-bg">Lips</div>
+          <div class="gallery-overlay"><span>Lip Filler</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-bg">Brows</div>
+          <div class="gallery-overlay"><span>Microblading</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-bg">Lashes</div>
+          <div class="gallery-overlay"><span>Lash Extensions</span></div>
+        </div>
+        <div class="gallery-item wide">
+          <div class="gallery-item-bg">Skin</div>
+          <div class="gallery-overlay"><span>HydraFacial</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-bg">Botox</div>
+          <div class="gallery-overlay"><span>Botox</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-bg">Cheeks</div>
+          <div class="gallery-overlay"><span>Cheek Filler</span></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-item-bg">Glow</div>
+          <div class="gallery-overlay"><span>Chemical Peel</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS ══ -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testimonials-head">
+        <span class="section-label">Client Reviews</span>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p>Trusted by hundreds of clients who love the results they see every day.</p>
+      </div>
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>
+            "I've been coming to Lush for two years and I would never go anywhere else.
+            My lip filler looks so natural — everyone thinks I was just born with amazing lips!"
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div class="author-info">
+              <strong>Sarah M.</strong>
+              <span>Lip Filler Client</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>
+            "The HydraFacial completely transformed my skin. My hyperpigmentation is gone
+            and I get compliments on my glow constantly. Worth every penny!"
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">J</div>
+            <div class="author-info">
+              <strong>Jessica R.</strong>
+              <span>HydraFacial Client</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>
+            "My microblading healed so beautifully. I wake up every morning loving my brows.
+            The team at Lush truly are artists — I recommend them to everyone!"
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <div class="author-info">
+              <strong>Ashley K.</strong>
+              <span>Microblading Client</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRICING ══ -->
+  <section id="pricing">
+    <div class="container">
+      <div class="pricing-head">
+        <span class="section-label">Investment</span>
+        <h2 class="section-title">Transparent Pricing</h2>
+        <p>Clear, fair pricing with no hidden fees. Starting prices listed — exact quotes given at consultation.</p>
+      </div>
+      <div class="pricing-tabs">
+        <button class="tab-btn active" data-tab="injectables">Injectables</button>
+        <button class="tab-btn" data-tab="skin">Skin Treatments</button>
+        <button class="tab-btn" data-tab="brow-lash">Brow &amp; Lash</button>
+        <button class="tab-btn" data-tab="body">Body</button>
+      </div>
+
+      <div class="pricing-panel active" id="tab-injectables">
+        <div class="pricing-list">
+          <div class="price-row">
+            <div><div class="price-name">Botox / Dysport</div><div class="price-desc">Per area – forehead, crow's feet, frown lines</div></div>
+            <div class="price-value">from $12/unit</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Lip Filler</div><div class="price-desc">1 mL hyaluronic acid filler – shape and volumize</div></div>
+            <div class="price-value">from $550</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Cheek Filler</div><div class="price-desc">1 mL per side – lift and contour</div></div>
+            <div class="price-value">from $650</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Jawline / Chin Filler</div><div class="price-desc">Define and sculpt the lower face</div></div>
+            <div class="price-value">from $650</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Tear Trough Filler</div><div class="price-desc">Under-eye hollows and dark circles</div></div>
+            <div class="price-value">from $700</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Baby Botox</div><div class="price-desc">Micro-dosing for subtle, natural softening</div></div>
+            <div class="price-value">from $200</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-panel" id="tab-skin">
+        <div class="pricing-list">
+          <div class="price-row">
+            <div><div class="price-name">HydraFacial</div><div class="price-desc">Cleanse, exfoliate, extract, and hydrate</div></div>
+            <div class="price-value">from $175</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Chemical Peel</div><div class="price-desc">Light to medium depth – customized to your skin</div></div>
+            <div class="price-value">from $120</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Microneedling</div><div class="price-desc">Collagen induction therapy for texture &amp; scars</div></div>
+            <div class="price-value">from $300</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">PRP Facial</div><div class="price-desc">Platelet-rich plasma for intense skin renewal</div></div>
+            <div class="price-value">from $450</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Dermaplaning Facial</div><div class="price-desc">Exfoliate dead skin and vellus hair for a silky finish</div></div>
+            <div class="price-value">from $110</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Lush Glow Package</div><div class="price-desc">HydraFacial + LED + dermaplaning + serum infusion</div></div>
+            <div class="price-value">from $320</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-panel" id="tab-brow-lash">
+        <div class="pricing-list">
+          <div class="price-row">
+            <div><div class="price-name">Microblading</div><div class="price-desc">Semi-permanent hair-stroke brow technique (includes touch-up)</div></div>
+            <div class="price-value">from $450</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Ombre / Powder Brows</div><div class="price-desc">Soft shaded effect – ideal for all skin types</div></div>
+            <div class="price-value">from $450</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Brow Lamination</div><div class="price-desc">Fluffy, brushed-up brows that last 6–8 weeks</div></div>
+            <div class="price-value">from $85</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Lash Lift &amp; Tint</div><div class="price-desc">Curl, lift, and tint your natural lashes</div></div>
+            <div class="price-value">from $95</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Classic Lash Extensions</div><div class="price-desc">Full set – one extension per natural lash</div></div>
+            <div class="price-value">from $160</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Volume Lash Extensions</div><div class="price-desc">Full set – handmade fans for maximum drama</div></div>
+            <div class="price-value">from $200</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-panel" id="tab-body">
+        <div class="pricing-list">
+          <div class="price-row">
+            <div><div class="price-name">Cryolipolysis (CoolSculpting-style)</div><div class="price-desc">Non-invasive fat freezing per applicator</div></div>
+            <div class="price-value">from $600/area</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">RF Skin Tightening</div><div class="price-desc">Radiofrequency for body skin laxity</div></div>
+            <div class="price-value">from $200</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">Lymphatic Drainage Massage</div><div class="price-desc">Reduce puffiness and support post-treatment healing</div></div>
+            <div class="price-value">from $120</div>
+          </div>
+          <div class="price-row">
+            <div><div class="price-name">PRP Hair Restoration</div><div class="price-desc">Scalp PRP injections to stimulate hair growth</div></div>
+            <div class="price-value">from $700</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ CONTACT / BOOKING ══ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-text">
+          <span class="section-label">Get in Touch</span>
+          <h2 class="section-title">Ready to Glow?</h2>
+          <p>
+            Book your complimentary consultation today. Our team will craft a personalized
+            treatment plan designed just for you — no pressure, no obligation.
+          </p>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📍</div>
+              <div>
+                <strong>Location</strong>
+                <span>123 Beauty Lane, Suite 200, Your City, ST 00000</span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📞</div>
+              <div>
+                <strong>Phone</strong>
+                <span><a href="tel:+15555550100">(555) 555-0100</a></span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">✉️</div>
+              <div>
+                <strong>Email</strong>
+                <span><a href="mailto:hello@lushaesthetics.com">hello@lushaesthetics.com</a></span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">🕐</div>
+              <div>
+                <strong>Hours</strong>
+                <span>Mon–Fri 9am–6pm · Sat 9am–4pm</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-form">
+          <h3>Book Your Appointment</h3>
+          <form id="booking-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Jane" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Doe" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+            </div>
+            <div class="form-group">
+              <label for="service">Service of Interest</label>
+              <select id="service" name="service">
+                <option value="" disabled selected>Select a service…</option>
+                <option>Botox / Dysport</option>
+                <option>Lip Filler</option>
+                <option>Cheek / Jawline Filler</option>
+                <option>HydraFacial</option>
+                <option>Lush Glow Package</option>
+                <option>Microblading</option>
+                <option>Lash Extensions / Lift</option>
+                <option>Chemical Peel / Microneedling</option>
+                <option>Body Contouring</option>
+                <option>PRP Treatment</option>
+                <option>Other / Free Consultation</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Additional Notes</label>
+              <textarea id="message" name="message" placeholder="Tell us about your goals or any questions you have…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Request Appointment →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ INSTAGRAM ══ -->
+  <section id="instagram">
+    <div class="container">
+      <div class="instagram-head">
+        <span class="section-label">Follow Along</span>
+        <h2 class="section-title" style="margin-bottom:8px;">@LushAesthetics</h2>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Follow us on Instagram →</a>
+      </div>
+      <div class="instagram-grid">
+        <div class="insta-item">
+          <div class="insta-overlay">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+        </div>
+        <div class="insta-item"><div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div></div>
+        <div class="insta-item"><div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div></div>
+        <div class="insta-item"><div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div></div>
+        <div class="insta-item"><div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div></div>
+        <div class="insta-item"><div class="insta-overlay"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo"><span>Lush</span> Aesthetics</a>
+          <p>Premium med spa &amp; beauty studio dedicated to helping you look and feel your most radiant self.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="TikTok">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Injectables</a></li>
+            <li><a href="#services">Skin Treatments</a></li>
+            <li><a href="#services">Lash &amp; Brow</a></li>
+            <li><a href="#services">Body Contouring</a></li>
+            <li><a href="#services">PRP Therapies</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Book Now</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Hours</h4>
+          <ul class="footer-hours">
+            <li><strong>Monday – Friday</strong> 9am – 6pm</li>
+            <li><strong>Saturday</strong> 9am – 4pm</li>
+            <li><strong>Sunday</strong> Closed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2024 Lush Aesthetics. All rights reserved.</span>
+        <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Sticky header shadow ──
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ── Mobile menu ──
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileClose = document.getElementById('mobile-close-btn');
+
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // ── Pricing tabs ──
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.pricing-panel');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ── Booking form submission ──
+    document.getElementById('booking-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      const original = btn.textContent;
+      btn.textContent = 'Request Sent! ✓';
+      btn.style.background = '#7D5C5C';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.style.background = '';
+        btn.disabled = false;
+        this.reset();
+      }, 3500);
+    });
+  </script>
+</body>
+</html>
